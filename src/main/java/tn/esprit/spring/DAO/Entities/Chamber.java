@@ -1,15 +1,17 @@
 package tn.esprit.spring.DAO.Entities;
 
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import java.util.Set;
 
 @Entity
 @Getter
 @Setter
+@AllArgsConstructor
+@NoArgsConstructor
 @Table(name="chamber")
+@Builder
 public class Chamber {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
