@@ -1,11 +1,13 @@
 package tn.esprit.spring.RestController;
 
+import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 import tn.esprit.spring.DAO.Entities.Reservation;
 import tn.esprit.spring.Services.IReservationService;
 
 import java.util.List;
-
+@RestController
+@AllArgsConstructor
 public class ReservationRestController {
     IReservationService iReservationService;
 

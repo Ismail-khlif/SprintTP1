@@ -1,10 +1,13 @@
 package tn.esprit.spring.Services;
 
+import lombok.AllArgsConstructor;
+import org.springframework.stereotype.Service;
 import tn.esprit.spring.DAO.Entities.Reservation;
 import tn.esprit.spring.DAO.Repositories.ReservationRepository;
 
 import java.util.List;
-
+@AllArgsConstructor
+@Service
 public class ReservationService implements IReservationService {
     ReservationRepository reservationRepository ;
 
