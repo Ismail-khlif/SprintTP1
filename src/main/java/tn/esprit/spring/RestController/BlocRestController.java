@@ -10,9 +10,32 @@ import java.util.List;
 
 @RestController
 @AllArgsConstructor
+@RequestMapping("BlocRestController")
 public class BlocRestController {
     IBlocService iBlocService ;
 
+    @GetMapping("findByNameBloc/{name}")
+    List<Bloc> findByBlocName(@PathVariable("name") String blocName){
+        return iBlocService.findByNomBloc(blocName);
+    }
+    @GetMapping("findByCapacityBloc/{capacity}")
+    List<Bloc> findByCapacityBloc(@PathVariable("capacity") int capacity){return iBlocService.findByCapacityBloc(capacity);}
+    @GetMapping("findByNomBlocandCapacity/{nom}/{capacity}")
+    List<Bloc> findByNomBlocandCapacity(@PathVariable("nom") String nom, @PathVariable("capacity") int capacity  ){
+        return iBlocService.findByNomBlocAndCapacityBloc(nom ,capacity);
+    }
+    @GetMapping("findByNomBlocIgnCasse/{nom}")
+    List<Bloc> findByNomBlocIgnCasse(@PathVariable("nom") String nom){
+        return iBlocService.findByNomBlocIgn(nom);
+    }
+    @GetMapping("findByCapacityGt/{capacity}")
+    List<Bloc> findBlocByCapaciteBlocGreaterThan(@PathVariable("capacity") int capacity){
+        return iBlocService.findBlocByCapaciteBlocGreaterThan(capacity);
+    }
+    @GetMapping("findByNomBlocContaines/{nom}")
+    List<Bloc> findBlocByNomBlocContaining(@PathVariable("nom") String nom){
+        return iBlocService.findBlocByNomBlocContaining(nom);
+    }
     @GetMapping("findAll")
     List<Bloc> findAll(){
         return iBlocService.findAll();

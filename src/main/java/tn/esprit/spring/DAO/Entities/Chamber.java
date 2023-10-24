@@ -23,10 +23,10 @@ public class Chamber {
     @Column(name="TypeC")
     private TypeChamber typeC ;
 
-    @OneToMany(cascade = CascadeType.ALL)
-    private Set<Bloc> blocs;
+    @ManyToOne
+    Bloc bloc ;
 
-    @ManyToOne(cascade =  CascadeType.ALL)
-    Reservation res  ;
+    @OneToMany(cascade =  CascadeType.ALL)
+    private  Set<Reservation> res  ;
 
 }

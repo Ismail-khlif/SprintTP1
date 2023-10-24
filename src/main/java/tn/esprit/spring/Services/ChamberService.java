@@ -3,6 +3,7 @@ package tn.esprit.spring.Services;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import tn.esprit.spring.DAO.Entities.Chamber;
+import tn.esprit.spring.DAO.Entities.TypeChamber;
 import tn.esprit.spring.DAO.Repositories.ChamberRepository;
 
 import java.util.List;
@@ -11,6 +12,12 @@ import java.util.List;
 @Service
 public class ChamberService implements IChamberService{
     ChamberRepository chamberRepository;
+
+    @Override
+    public Chamber findByNumerochamberAndTypeC(long numero, TypeChamber type) {
+        return chamberRepository.findByNumerochamberAndTypeC(numero , type);
+    }
+
     @Override
     public Chamber addChamber(Chamber c) {
         return chamberRepository.save(c) ;

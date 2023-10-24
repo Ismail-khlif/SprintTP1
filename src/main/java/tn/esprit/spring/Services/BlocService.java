@@ -10,6 +10,35 @@ import java.util.List;
 @Service
 public class BlocService implements IBlocService{
     BlocRepository blocRepository ;
+    public List<Bloc> findByNomBloc(String nomBloc){
+        return blocRepository.findByNomBloc(nomBloc);
+    }
+
+    @Override
+    public List<Bloc> findByCapacityBloc(int capacity) {
+        return blocRepository.findByCapaciteBloc(capacity);
+    }
+
+    @Override
+    public List<Bloc> findByNomBlocAndCapacityBloc( String nomBloc , int capacity ) {
+        return blocRepository.findBlocByNomBlocAndCapaciteBloc(nomBloc ,capacity );
+    }
+
+    @Override
+    public List<Bloc> findByNomBlocIgn(String nomBloc) {
+        return blocRepository.findBlocByNomBlocIgnoreCase(nomBloc);
+    }
+
+    @Override
+    public List<Bloc> findBlocByCapaciteBlocGreaterThan(int capacity) {
+        return blocRepository.findBlocByCapaciteBlocGreaterThan(capacity);
+    }
+
+    @Override
+    public List<Bloc> findBlocByNomBlocContaining(String nomBloc) {
+        return blocRepository.findBlocByNomBlocContaining(nomBloc);
+    }
+
     @Override
     public Bloc addBloc(Bloc b) {
         return blocRepository.save(b); //ajouter many

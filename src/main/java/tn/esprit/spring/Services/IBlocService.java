@@ -5,6 +5,12 @@ import tn.esprit.spring.DAO.Entities.Bloc;
 import java.util.List;
 
 public interface IBlocService {
+    List<Bloc> findByNomBloc(String nomBloc);
+    List<Bloc> findByCapacityBloc(int capacity);
+    List<Bloc> findByNomBlocAndCapacityBloc(String nomBloc , int capacity );
+    List<Bloc> findByNomBlocIgn(String nomBloc);
+    List<Bloc> findBlocByCapaciteBlocGreaterThan(int capacity);
+    List<Bloc> findBlocByNomBlocContaining(String nomBloc);
     Bloc addBloc(Bloc b);
     List<Bloc> addAllBlocs(List<Bloc> ls) ;
     Bloc editBloc(Bloc b) ;

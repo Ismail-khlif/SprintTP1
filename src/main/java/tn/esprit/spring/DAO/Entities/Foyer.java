@@ -3,6 +3,9 @@ package tn.esprit.spring.DAO.Entities;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.List;
+import java.util.Set;
+
 @Entity
 @Table(name="Foyer")
 @Getter
@@ -21,4 +24,8 @@ public class Foyer {
 
     @OneToOne(mappedBy = "foyer")
     private Universite universite ;
+
+    @OneToMany(mappedBy = "foyer")
+    List<Bloc> blocs ;
+
 }

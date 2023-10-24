@@ -3,6 +3,7 @@ package tn.esprit.spring.RestController;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 import tn.esprit.spring.DAO.Entities.Chamber;
+import tn.esprit.spring.DAO.Entities.TypeChamber;
 import tn.esprit.spring.Services.IBlocService;
 import tn.esprit.spring.Services.IChamberService;
 
@@ -12,6 +13,10 @@ import java.util.List;
 @AllArgsConstructor
 public class ChamberRestController {
     IChamberService iChamberService ;
+    @GetMapping("findchamberByNumero/{numero}/{type}")
+    Chamber findNumeroType(@PathVariable("numero") long num , @PathVariable("type") TypeChamber type){
+        return iChamberService.findByNumerochamberAndTypeC(num , type);
+    }
 
     @GetMapping("findAllChambers")
     List<Chamber> findAll(){
