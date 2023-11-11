@@ -11,6 +11,7 @@ public interface IBlocService {
     List<Bloc> findByNomBlocIgn(String nomBloc);
     List<Bloc> findBlocByCapaciteBlocGreaterThan(int capacity);
     List<Bloc> findBlocByNomBlocContaining(String nomBloc);
+    List<Bloc> findAllByOrderByNomBloc();
     Bloc addBloc(Bloc b);
     List<Bloc> addAllBlocs(List<Bloc> ls) ;
     Bloc editBloc(Bloc b) ;

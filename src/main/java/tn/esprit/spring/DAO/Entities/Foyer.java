@@ -22,10 +22,10 @@ public class Foyer {
     @Column(name="capaciteFoyer")
     private long capaciteFoyer ;
 
-    @OneToOne(mappedBy = "foyer")
+    @OneToOne(mappedBy = "foyer" , cascade = CascadeType.ALL)
     private Universite universite ;
 
-    @OneToMany(mappedBy = "foyer")
+    @OneToMany(mappedBy = "foyer"  , cascade = CascadeType.ALL)
     List<Bloc> blocs ;
 
 }

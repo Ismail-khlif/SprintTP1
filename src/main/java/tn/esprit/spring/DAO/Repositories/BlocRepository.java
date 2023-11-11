@@ -14,9 +14,11 @@ public interface BlocRepository extends JpaRepository<Bloc,Long> {
     List<Bloc> findBlocByNomBlocIgnoreCase(String nomBloc);
     List<Bloc> findBlocByCapaciteBlocGreaterThan(int capacity);
     List<Bloc> findBlocByNomBlocContaining(String nomBloc);
-    List<Bloc> findBlocByNomBlocOrderByNomBloc(String nomBloc);
+    List<Bloc> findAllByOrderByNomBloc();
     List<Bloc> findBlocByNomBlocOrCapaciteBloc(String nomBloc , int capacity);
-
+    List<Bloc> findByFoyer(Foyer f);
+  //  List<Bloc> findByFoyerIdFoyer(long idF);
     List<Bloc> findBlocByFoyer_Universite(Universite u);
+    List<Bloc> findBlocByFoyer_UniversiteIdUniversite(long idU);
     List<Bloc> getByNomBloc(String nomBloc);
 }

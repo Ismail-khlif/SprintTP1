@@ -18,6 +18,8 @@ public class ChamberRestController {
         return iChamberService.findByNumerochamberAndTypeC(num , type);
     }
 
+
+
     @GetMapping("findAllChambers")
     List<Chamber> findAll(){
         return iChamberService.findAll();

@@ -1,5 +1,6 @@
 package tn.esprit.spring.DAO.Entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -17,16 +18,16 @@ public class Chamber {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long idChamber ;
 
-    @Column(name="numeroChamber")
+    @Column(name="numeroChamber" ,unique = true)
     private int numerochamber ;
 
     @Column(name="TypeC")
     private TypeChamber typeC ;
-
+    @JsonIgnore
     @ManyToOne
     Bloc bloc ;
 
     @OneToMany(cascade =  CascadeType.ALL)
-    private  Set<Reservation> res  ;
+    private  Set<Reservation> reservations  ;
 
 }

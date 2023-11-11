@@ -4,9 +4,11 @@ import jakarta.websocket.server.PathParam;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 import tn.esprit.spring.DAO.Entities.Bloc;
+import tn.esprit.spring.DAO.Entities.Chamber;
 import tn.esprit.spring.Services.IBlocService;
 
 import java.util.List;
+import java.util.Set;
 
 @RestController
 @AllArgsConstructor
@@ -36,6 +38,8 @@ public class BlocRestController {
     List<Bloc> findBlocByNomBlocContaining(@PathVariable("nom") String nom){
         return iBlocService.findBlocByNomBlocContaining(nom);
     }
+
+
     @GetMapping("findAll")
     List<Bloc> findAll(){
         return iBlocService.findAll();
@@ -43,9 +47,9 @@ public class BlocRestController {
 
     @PostMapping("addBloc")
     Bloc AddBloc(@RequestBody Bloc b ){
+
         return iBlocService.addBloc(b);
     }
-
     @PostMapping("addAllBlocs")
     List<Bloc> addAllBlocs(@RequestBody List<Bloc> b){
         return iBlocService.addAllBlocs(b);

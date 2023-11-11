@@ -25,5 +25,5 @@ public class Reservation {
     private Boolean estValide ;
 
     @ManyToMany(cascade = CascadeType.ALL)
-    public Set<Etudiant> etu ;
+    public Set<Etudiant> etudiants ;
 }

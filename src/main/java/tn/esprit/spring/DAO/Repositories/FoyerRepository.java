@@ -8,9 +8,9 @@ import tn.esprit.spring.DAO.Entities.Universite;
 import java.util.List;
 
 public interface FoyerRepository extends JpaRepository<Foyer,String> {
-    List<Foyer> findByBlocs(Bloc bloc);
-    Foyer findFoyerByIdFoyerAndBlocs(int idFoyer , Bloc b);
-    List<Foyer> findFoyerByCapaciteFoyer(int capacity);
+     //Foyer findByBlocs(Bloc bloc);
+   // Foyer findFoyerByIdFoyerAndBlocs(int idFoyer , Bloc b);
+    List<Foyer> findFoyerByCapaciteFoyer(long capacity);
 
     Foyer findFoyerByUniversite(Universite u);
 

@@ -3,9 +3,13 @@ package tn.esprit.spring.Services;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import tn.esprit.spring.DAO.Entities.Bloc;
+import tn.esprit.spring.DAO.Entities.Chamber;
 import tn.esprit.spring.DAO.Repositories.BlocRepository;
+import tn.esprit.spring.DAO.Repositories.ChamberRepository;
 
 import java.util.List;
+import java.util.Set;
+
 @AllArgsConstructor
 @Service
 public class BlocService implements IBlocService{
@@ -40,8 +44,22 @@ public class BlocService implements IBlocService{
     }
 
     @Override
+    public List<Bloc> findAllByOrderByNomBloc() {
+        return blocRepository.findAllByOrderByNomBloc();
+    }
+
+    ChamberRepository chamberRepository ;
+    @Override
     public Bloc addBloc(Bloc b) {
-        return blocRepository.save(b); //ajouter many
+        Set<Chamber> ch = b.getChambers();
+        Bloc bloc = blocRepository.save(b);
+        ch.forEach(chamber -> {
+            chamber.setBloc(bloc);
+            chamberRepository.save(chamber);
+        });
+      // List<Chamber> chs = chamberRepository.saveAll(ch);
+
+        return bloc ;
     }
 
     @Override
@@ -73,6 +91,12 @@ public class BlocService implements IBlocService{
 
     @Override
     public void delete(Bloc b) {
+        Set<Chamber> chs = b.getChambers();
         blocRepository.delete(b);
+        //chamberRepository.deleteAll(b.getChambers());
+        chs.forEach(chamber -> {
+            chamberRepository.delete(chamber);
+        });
+
     }
 }
