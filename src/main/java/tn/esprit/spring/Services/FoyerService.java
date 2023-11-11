@@ -33,12 +33,12 @@ public class FoyerService implements IFoyerService {
     }
 
     @Override
-    public Foyer findByIDFoyer(String id) {
+    public Foyer findByIDFoyer(long id) {
         return foyerRepository.findById(id).orElse(Foyer.builder().build());
     }
 
     @Override
-    public void DeleteByIDFoyer(String id) {
+    public void DeleteByIDFoyer(long id) {
         foyerRepository.deleteById(id);
     }
 

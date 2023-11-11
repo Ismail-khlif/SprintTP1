@@ -9,9 +9,10 @@ import tn.esprit.spring.Services.IUniversite;
 public class UniversiteRestController {
     IUniversite iUniversiteService;
 
-    @PutMapping("/updateUniversite/{nomFoyer}/{nomUniversite}")
-    Universite affecterFoyerAuniversite(@PathVariable("nomFoyer") String idFoyer , @PathVariable("nomUniversite") String nomUniversite){
-        return iUniversiteService.affecterFoyerAuniversite(idFoyer,nomUniversite);
+    @PutMapping("/updateUniversite/{idFoyer}/{nomUniversite}")
+    Universite affecterFoyerAuniversite(@PathVariable("idFoyer") long idFoyer ,
+                                        @PathVariable("nomUniversite") String nomUniversite){
+        return iUniversiteService.affecterFoyerAUniversite(idFoyer,nomUniversite);
     }
 
     @PutMapping("desaffecterUniversite/{idUnive}")

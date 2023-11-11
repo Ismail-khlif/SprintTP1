@@ -24,8 +24,8 @@ public interface ChamberRepository  extends JpaRepository<Chamber,Long> {
     List<Chamber> getByNumerochamberIsNotNull();
 
 
-    List<Chamber> findByBlocFoyerUniversiteNomUniversiteAndResAnneeReservationAndResEtuNomEt(String nomUni , Date annee
-    ,String nomET);
+ /*List<Chamber> findByBlocFoyerUniversiteNomUniversiteAndResAnneeReservationAndResEtuNomEt(String nomUni , Date annee
+    ,String nomET);*/
 
 
     // Recherche par numéro de chamber

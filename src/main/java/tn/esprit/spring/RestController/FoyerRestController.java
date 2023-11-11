@@ -18,7 +18,7 @@ public class FoyerRestController {
     }
 
     @GetMapping("findByIdFoyer/{id}")
-    Foyer findbyIdFoyer(@PathVariable("id") String id){
+    Foyer findbyIdFoyer(@PathVariable("id") long id){
         return iFoyerService.findByIDFoyer(id);
     }
 
@@ -38,7 +38,7 @@ public class FoyerRestController {
     }
 
     @DeleteMapping("DeleteFoyerByID/{id}")
-    void DeleteFoyerByID(@PathVariable("id") String id){
+    void DeleteFoyerByID(@PathVariable("id") long id){
         iFoyerService.DeleteByIDFoyer(id);
     }
 

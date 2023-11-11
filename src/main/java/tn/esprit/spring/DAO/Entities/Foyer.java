@@ -15,7 +15,8 @@ import java.util.Set;
 @Builder
 public class Foyer {
     @Id
-    private  String idFoyer ;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private  long idFoyer ;
     @Column(name="nomFoyer")
     private String nomFoyer ;
 

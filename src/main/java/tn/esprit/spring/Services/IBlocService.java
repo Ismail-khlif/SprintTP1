@@ -20,4 +20,6 @@ public interface IBlocService {
     void deleteByID(long id);
     void delete(Bloc b) ;
 
+    
+
 }

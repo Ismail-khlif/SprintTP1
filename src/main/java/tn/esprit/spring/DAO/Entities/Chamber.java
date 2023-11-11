@@ -23,7 +23,7 @@ public class Chamber {
 
     @Column(name="TypeC")
     private TypeChamber typeC ;
-    @JsonIgnore
+
     @ManyToOne
     Bloc bloc ;
 
