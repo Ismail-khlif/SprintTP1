@@ -52,4 +52,19 @@ public class ChamberRestController {
     void DeleteChmber(@RequestBody Chamber c){
         iChamberService.delete(c);
     }
+
+    @GetMapping("getChamberList/{nomBloc}")
+    List<Chamber> getChambresParNomBloc(@PathVariable("nomBloc") String nomBloc){
+        return iChamberService.getChambresParNomBloc(nomBloc);
+    }
+    @GetMapping("chamberListNonReserver/{type}/{nomFoyer}")
+    List<Chamber> getChambresNonReserveParNomFoyerEtTypeChambre(@PathVariable("type") TypeChamber type , String nomFoyer)
+    {
+        return iChamberService.getChambresNonReserveParNomFoyerEtTypeChambre(nomFoyer , type);
+    }
+
+    @GetMapping("nbChambreParTypeEtBloc/{type}/{idBloc}")
+    long nbChambreParTypeEtBloc(@PathVariable("type") TypeChamber type , @PathVariable("idBloc") long idBloc){
+        return iChamberService.nbChambreParTypeEtBloc(type , idBloc);
+    }
 }

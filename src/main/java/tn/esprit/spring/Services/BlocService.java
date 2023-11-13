@@ -4,9 +4,12 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import tn.esprit.spring.DAO.Entities.Bloc;
 import tn.esprit.spring.DAO.Entities.Chamber;
+import tn.esprit.spring.DAO.Entities.Foyer;
 import tn.esprit.spring.DAO.Repositories.BlocRepository;
 import tn.esprit.spring.DAO.Repositories.ChamberRepository;
+import tn.esprit.spring.DAO.Repositories.FoyerRepository;
 
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -98,5 +101,29 @@ public class BlocService implements IBlocService{
             chamberRepository.delete(chamber);
         });
 
+    }
+
+    @Override
+    public Bloc affecterChambresABloc(List<Integer> numChambre, String nomBloc) {
+        Bloc b = blocRepository.getBlocByNomBloc(nomBloc);
+        Set<Chamber> chambers = new HashSet<>();
+        numChambre.forEach(numero ->{
+            Chamber c = chamberRepository.findByNumerochamber(numero);
+            c.setBloc(b);
+            chamberRepository.save(c);
+            chambers.add(c);
+        });
+        b.setChambers(chambers);
+        return blocRepository.save(b);
+    }
+
+    FoyerRepository foyerRepository ;
+    @Override
+    public Bloc affecterBlocAFoyer(String nomBloc, String nomFoyer) {
+        Foyer f = foyerRepository.findFoyerByNomFoyer(nomFoyer);
+        Bloc b = blocRepository.getBlocByNomBloc(nomBloc);
+        b.setFoyer(f);
+
+        return blocRepository.save(b);
     }
 }

@@ -20,6 +20,9 @@ public interface IBlocService {
     void deleteByID(long id);
     void delete(Bloc b) ;
 
-    
+    Bloc affecterChambresABloc(List<Integer> numChambre, String nomBloc) ;
+
+    Bloc affecterBlocAFoyer( String nomBloc, String nomFoyer) ;
+
 
 }

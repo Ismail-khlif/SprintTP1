@@ -75,5 +75,15 @@ public class BlocRestController {
         iBlocService.delete(b);
     }
 
-
+/**********************************/
+    @PutMapping("affecterChamberABloc/{nomBloc}")
+    Bloc affecterChambresABloc(@RequestBody List<Integer> numeros , @PathVariable("nomBloc") String nomBloc){
+        return iBlocService.affecterChambresABloc(numeros , nomBloc);
+    }
+/****************************/
+    @PutMapping("affecterBlocFoyer/{nomBloc}/{nomFoyer}")
+    Bloc affecterBlocAFoyer(@PathVariable("nomFoyer") String nomFoyer ,
+                            @PathVariable("nomBloc") String nomBloc ){
+        return iBlocService.affecterBlocAFoyer(nomBloc, nomFoyer);
+    }
 }

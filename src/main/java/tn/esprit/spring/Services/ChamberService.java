@@ -2,8 +2,10 @@ package tn.esprit.spring.Services;
 
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
+import tn.esprit.spring.DAO.Entities.Bloc;
 import tn.esprit.spring.DAO.Entities.Chamber;
 import tn.esprit.spring.DAO.Entities.TypeChamber;
+import tn.esprit.spring.DAO.Repositories.BlocRepository;
 import tn.esprit.spring.DAO.Repositories.ChamberRepository;
 
 import java.util.List;
@@ -53,5 +55,23 @@ public class ChamberService implements IChamberService{
     public void delete(Chamber c) {
         chamberRepository.delete(c);
 
+    }
+    BlocRepository blocRepository;
+    @Override
+    public List<Chamber> getChambresParNomBloc(String nomBloc) {
+        Bloc b = blocRepository.getBlocByNomBloc(nomBloc);
+        return chamberRepository.findByBloc(b) ;
+    }
+
+    @Override
+    public List<Chamber> getChambresNonReserveParNomFoyerEtTypeChambre(String nomFoyer, TypeChamber type) {
+        return chamberRepository.findChamberByBlocFoyerNomFoyerAndTypeCAndReservations_Empty(nomFoyer,type);
+    }
+
+    @Override
+    public long nbChambreParTypeEtBloc(TypeChamber type, long idBloc) {
+        Bloc b = blocRepository.findById(idBloc).get();
+        int c = chamberRepository.countChamberByTypeCAndBloc_IdBloc(type , idBloc);
+        return c;
     }
 }

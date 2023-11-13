@@ -12,7 +12,8 @@ public interface IReservationService {
     List<Reservation> findAllReservations();
 
     Reservation findByIdReservation(String id);
-
+    Reservation ajouterReservationEtAssignerAChambreEtAEtudiant (int numChambre, long cin) ;
+    Reservation annulerReservation (long cinEtudiant) ;
     void deleteById(String id);
     void deleteReservation(Reservation r);
 }

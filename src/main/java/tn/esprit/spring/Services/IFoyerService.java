@@ -12,4 +12,6 @@ public interface IFoyerService {
     Foyer findByIDFoyer(long id);
     void DeleteByIDFoyer(long id);
     void deleteFoyer(Foyer f);
+
+    Foyer ajouterFoyerEtAffecterAUniversite (Foyer foyer, long idUniversite) ;
 }

@@ -45,4 +45,9 @@ public class ReservationRestController {
     void DeleteReservation(@RequestBody Reservation r){
         iReservationService.deleteReservation(r);
     }
+
+    @PostMapping("generateReservation/{numchamber}/{cin}")
+    Reservation addReseravationavecChamber(@PathVariable("numchamber") int numero ,  @PathVariable("cin") long cin){
+        return iReservationService.ajouterReservationEtAssignerAChambreEtAEtudiant(numero, cin);
+    }
 }

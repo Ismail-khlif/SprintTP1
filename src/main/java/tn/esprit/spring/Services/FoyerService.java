@@ -3,7 +3,9 @@ package tn.esprit.spring.Services;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import tn.esprit.spring.DAO.Entities.Foyer;
+import tn.esprit.spring.DAO.Entities.Universite;
 import tn.esprit.spring.DAO.Repositories.FoyerRepository;
+import tn.esprit.spring.DAO.Repositories.UniversiteRepository;
 
 import java.util.List;
 
@@ -46,5 +48,15 @@ public class FoyerService implements IFoyerService {
     public void deleteFoyer(Foyer f) {
         foyerRepository.delete(f);
 
+    }
+
+    UniversiteRepository universiteRepository;
+    @Override
+    public Foyer ajouterFoyerEtAffecterAUniversite(Foyer foyer, long idUniversite) {
+        Universite u = universiteRepository.findById(idUniversite).get();
+        foyerRepository.save(foyer);
+        u.setFoyer(foyer);
+        universiteRepository.save(u);
+        return foyer;
     }
 }

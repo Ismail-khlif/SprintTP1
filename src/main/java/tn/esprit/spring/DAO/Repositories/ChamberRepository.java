@@ -14,6 +14,7 @@ import java.util.List;
 public interface ChamberRepository  extends JpaRepository<Chamber,Long> {
     Chamber findByNumerochamberAndTypeC(long numero , TypeChamber type);
     // select * from chamber where numhamber> ?
+    int countChamberByTypeCAndBloc_IdBloc(TypeChamber typeChamber , long idBloc);
 
     Chamber findByNumerochamber(long numero);
     List<Chamber> findByTypeC(TypeChamber type);
@@ -27,6 +28,7 @@ public interface ChamberRepository  extends JpaRepository<Chamber,Long> {
  /*List<Chamber> findByBlocFoyerUniversiteNomUniversiteAndResAnneeReservationAndResEtuNomEt(String nomUni , Date annee
     ,String nomET);*/
 
+    List<Chamber> findChamberByBlocFoyerNomFoyerAndTypeCAndReservations_Empty(String NomFoyer , TypeChamber type);
 
     // Recherche par numéro de chamber
     @Query("select c from Chamber c where c.numerochamber=?1")

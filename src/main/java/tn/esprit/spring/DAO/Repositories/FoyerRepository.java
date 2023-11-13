@@ -14,4 +14,5 @@ public interface FoyerRepository extends JpaRepository<Foyer,Long> {
 
     Foyer findFoyerByUniversite(Universite u);
 
+    Foyer findFoyerByNomFoyer(String nomFoyer);
 }
