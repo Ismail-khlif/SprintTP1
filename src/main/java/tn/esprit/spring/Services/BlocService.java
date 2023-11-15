@@ -105,25 +105,23 @@ public class BlocService implements IBlocService{
 
     @Override
     public Bloc affecterChambresABloc(List<Integer> numChambre, String nomBloc) {
-        Bloc b = blocRepository.getBlocByNomBloc(nomBloc);
-        Set<Chamber> chambers = new HashSet<>();
-        numChambre.forEach(numero ->{
-            Chamber c = chamberRepository.findByNumerochamber(numero);
-            c.setBloc(b);
-            chamberRepository.save(c);
-            chambers.add(c);
-        });
-        b.setChambers(chambers);
-        return blocRepository.save(b);
+       Bloc b = blocRepository.getBlocByNomBloc(nomBloc);
+       numChambre.forEach(numero ->{
+           Chamber c = chamberRepository.findByNumerochamber(numero);
+           c.setBloc(b);
+           chamberRepository.save(c);
+
+       });
+       return b ;
     }
 
     FoyerRepository foyerRepository ;
     @Override
     public Bloc affecterBlocAFoyer(String nomBloc, String nomFoyer) {
-        Foyer f = foyerRepository.findFoyerByNomFoyer(nomFoyer);
         Bloc b = blocRepository.getBlocByNomBloc(nomBloc);
+        Foyer f = foyerRepository.findFoyerByNomFoyer(nomFoyer);
+        ////////////// PARENT HOWA BLOC
         b.setFoyer(f);
-
         return blocRepository.save(b);
     }
 }

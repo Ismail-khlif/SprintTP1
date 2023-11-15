@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -28,6 +29,6 @@ public class Chamber {
     Bloc bloc ;
 
     @OneToMany(cascade =  CascadeType.ALL)
-    private  Set<Reservation> reservations  ;
+    private  Set<Reservation> reservations  = new HashSet<>();
 
 }

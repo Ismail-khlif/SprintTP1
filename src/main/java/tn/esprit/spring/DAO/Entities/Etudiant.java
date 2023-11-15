@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.LocalDate;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -32,6 +33,6 @@ public class Etudiant {
 
     @JsonIgnore
     @ManyToMany(mappedBy = "etudiants" , cascade =  CascadeType.ALL)
-    private Set<Reservation> resservations ;
+    private Set<Reservation> resservations = new HashSet<>();
 
 }
