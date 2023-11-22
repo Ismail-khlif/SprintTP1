@@ -16,7 +16,7 @@ public interface IChamberService {
     void delete(Chamber c);
 
     List<Chamber> getChambresParNomBloc( String nomBloc) ;
-
+    void listeChambreParBloc();
     List<Chamber> getChambresNonReserveParNomFoyerEtTypeChambre( String nomFoyer,TypeChamber type) ;
     long nbChambreParTypeEtBloc( TypeChamber type, long idBloc) ;
 }

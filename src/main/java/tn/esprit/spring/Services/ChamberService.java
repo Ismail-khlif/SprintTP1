@@ -1,6 +1,9 @@
 package tn.esprit.spring.Services;
 
 import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import lombok.extern.slf4j.XSlf4j;
 import org.springframework.stereotype.Service;
 import tn.esprit.spring.DAO.Entities.Bloc;
 import tn.esprit.spring.DAO.Entities.Chamber;
@@ -12,9 +15,26 @@ import java.util.List;
 
 @AllArgsConstructor
 @Service
+@Slf4j
 public class ChamberService implements IChamberService{
     ChamberRepository chamberRepository;
+    BlocRepository blocRepository;
+    public void listeChambreParBloc(){
+        List<Bloc> blocs = blocRepository.findAll();
+        blocs.forEach(bloc -> {
+            log.info(" Bloc => "+ bloc.getNomBloc()+" ayant une capacite "+bloc.getCapaciteBloc());
+            if(bloc.getChambers().isEmpty()){
+                log.info("Pas de chamber disponible dans ce bloc");
+            }else{
+                bloc.getChambers().forEach(chamber -> {
+                    log.info("NumChamber"+chamber.getNumerochamber()+" type : "+chamber.getTypeC());
+                    log.info("la liste des Chambres pour ce bloc ");
 
+                });
+            }
+            log.info("*******************************");
+        });
+    }
     @Override
     public Chamber findByNumerochamberAndTypeC(long numero, TypeChamber type) {
         return chamberRepository.findByNumerochamberAndTypeC(numero , type);
@@ -56,7 +76,6 @@ public class ChamberService implements IChamberService{
         chamberRepository.delete(c);
 
     }
-    BlocRepository blocRepository;
     @Override
     public List<Chamber> getChambresParNomBloc(String nomBloc) {
         Bloc b = blocRepository.getBlocByNomBloc(nomBloc);
