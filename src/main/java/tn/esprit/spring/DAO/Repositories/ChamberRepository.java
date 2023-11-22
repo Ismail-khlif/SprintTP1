@@ -20,6 +20,7 @@ public interface ChamberRepository  extends JpaRepository<Chamber,Long> {
     // KI NEKHDEMO BEL @ PARAMMMMM
   //  @Query(nativeQuery = true , value = "select * from chamber where numeroChamber=")
     //Chamber chamberByNumeroChamber(long numero);
+    int countChamberByTypeC(TypeChamber type);
 
     Chamber findByNumerochamber(long numero);
     List<Chamber> findByTypeC(TypeChamber type);

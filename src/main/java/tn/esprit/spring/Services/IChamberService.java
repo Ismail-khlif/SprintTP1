@@ -17,6 +17,7 @@ public interface IChamberService {
 
     List<Chamber> getChambresParNomBloc( String nomBloc) ;
     void listeChambreParBloc();
+    void pourcentageChambreParTypeChambre();
     List<Chamber> getChambresNonReserveParNomFoyerEtTypeChambre( String nomFoyer,TypeChamber type) ;
     long nbChambreParTypeEtBloc( TypeChamber type, long idBloc) ;
 }

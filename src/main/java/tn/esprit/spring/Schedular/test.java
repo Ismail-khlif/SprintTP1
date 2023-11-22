@@ -17,8 +17,13 @@ IChamberService iChamberService;    /*@Scheduled(fixedRate = 2000)
         log.info("sabalkhiir boss -_- ");
     }*/
 
-    @Scheduled(fixedRate = 2000)
+    /*@Scheduled(fixedRate = 2000)
     void afficheQ(){
         iChamberService.listeChambreParBloc();
+    }*/
+
+    @Scheduled(fixedRate = 300000)
+    void Display(){
+        iChamberService.pourcentageChambreParTypeChambre();
     }
 }

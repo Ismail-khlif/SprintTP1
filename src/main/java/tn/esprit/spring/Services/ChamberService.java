@@ -19,6 +19,19 @@ import java.util.List;
 public class ChamberService implements IChamberService{
     ChamberRepository chamberRepository;
     BlocRepository blocRepository;
+
+    public void pourcentageChambreParTypeChambre(){
+        String[] Typec =new String[3];
+
+        int nbSimple = chamberRepository.countChamberByTypeC(TypeChamber.Simple);
+        int nbDoube = chamberRepository.countChamberByTypeC(TypeChamber.Double);
+        int nbTriple = chamberRepository.countChamberByTypeC(TypeChamber.Triple);
+        long allChamber = chamberRepository.count();
+        log.info("Nombre Total des chambers:"+allChamber);
+        log.info("le prourcentage des chambres pour le type Simple est égale"+nbSimple/allChamber*100);
+        log.info("le prourcentage des chambres pour le type Double est égale"+nbDoube/allChamber*100);
+        log.info("le prourcentage des chambres pour le type Triple est égale"+nbTriple/allChamber*100);
+    }
     public void listeChambreParBloc(){
         List<Bloc> blocs = blocRepository.findAll();
         blocs.forEach(bloc -> {
