@@ -1,9 +1,11 @@
 package tn.esprit.spring.Services;
 
 import tn.esprit.spring.DAO.Entities.Chamber;
+import tn.esprit.spring.DAO.Entities.Reservation;
 import tn.esprit.spring.DAO.Entities.TypeChamber;
 
 import java.util.List;
+import java.util.Set;
 
 public interface IChamberService {
     Chamber findByNumerochamberAndTypeC(long numero , TypeChamber type);
@@ -20,4 +22,6 @@ public interface IChamberService {
     void pourcentageChambreParTypeChambre();
     List<Chamber> getChambresNonReserveParNomFoyerEtTypeChambre( String nomFoyer,TypeChamber type) ;
     long nbChambreParTypeEtBloc( TypeChamber type, long idBloc) ;
+
+    Set<Reservation> listerReservationsPourChambre(Long idChamber);
 }

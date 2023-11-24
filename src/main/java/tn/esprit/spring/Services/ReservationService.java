@@ -89,8 +89,10 @@ public class ReservationService implements IReservationService {
         }else{
             System.out.println("creation Reservation");
             Reservation r = new Reservation();
-            r.setIdReservation(dateDebutAU.getYear()+"/"+dateFinAU.getYear()+"-"+c.getBloc().getNomBloc()
-                            +"-"+c.getNumerochamber()+"-"+e.getCin());
+           // r.setIdReservation(dateDebutAU.getYear()+"/"+dateFinAU.getYear()+"-"+c.getBloc().getNomBloc()
+             //               +"-"+c.getNumerochamber()+"-"+e.getCin());
+            //TODO
+            r.setIdReservation(1);
             r.setAnneeReservation(new Date());
             r.setEstValide(true);
 
@@ -124,4 +126,29 @@ public class ReservationService implements IReservationService {
         reservationRepository.delete(r);
 
     }
+    @Override
+    public List<Reservation> listerReservationsEtudiant(Long cinEtudiant) {
+        Etudiant etudiant = etudiantRepository.findByCin(cinEtudiant);
+        return reservationRepository.findByEtudiants(etudiant);
+    }
+    @Override
+    public List<Reservation> filtrerReservationsParDate(Date dateReservation) {
+        return reservationRepository.findByAnneeReservation(dateReservation);
+    }
+    @Override
+    public List<Reservation> filtrerReservationsParAnneeEtValide(Date annee, Boolean estValide) {
+        return reservationRepository.findByAnneeReservationAndEstValide(annee, estValide);
+    }
+
+
+    /*
+
+    public List<Chambre> listerChambresDisponibles() {
+        List<Chambre> toutesLesChambres = chambreRepository.findAll();
+        List<Chambre> chambresOccupées = reservationRepository.findAllChambresOccupees();
+
+        toutesLesChambres.removeAll(chambresOccupées);
+
+        return toutesLesChambres;
+    }*/
 }

@@ -2,6 +2,7 @@ package tn.esprit.spring.Services;
 
 import tn.esprit.spring.DAO.Entities.Reservation;
 
+import java.util.Date;
 import java.util.List;
 
 public interface IReservationService {
@@ -16,4 +17,7 @@ public interface IReservationService {
     Reservation annulerReservation (long cinEtudiant) ;
     void deleteById(String id);
     void deleteReservation(Reservation r);
+    List<Reservation> listerReservationsEtudiant(Long cinEtudiant) ;
+    List<Reservation> filtrerReservationsParDate(Date date);
+    List<Reservation> filtrerReservationsParAnneeEtValide(Date annee, Boolean estValide) ;
 }

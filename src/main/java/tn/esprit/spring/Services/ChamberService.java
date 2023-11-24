@@ -7,11 +7,14 @@ import lombok.extern.slf4j.XSlf4j;
 import org.springframework.stereotype.Service;
 import tn.esprit.spring.DAO.Entities.Bloc;
 import tn.esprit.spring.DAO.Entities.Chamber;
+import tn.esprit.spring.DAO.Entities.Reservation;
 import tn.esprit.spring.DAO.Entities.TypeChamber;
 import tn.esprit.spring.DAO.Repositories.BlocRepository;
 import tn.esprit.spring.DAO.Repositories.ChamberRepository;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @AllArgsConstructor
 @Service
@@ -27,10 +30,10 @@ public class ChamberService implements IChamberService{
         int nbDoube = chamberRepository.countChamberByTypeC(TypeChamber.Double);
         int nbTriple = chamberRepository.countChamberByTypeC(TypeChamber.Triple);
         long allChamber = chamberRepository.count();
-        log.info("Nombre Total des chambers:"+allChamber);
-        log.info("le prourcentage des chambres pour le type Simple est égale"+nbSimple/allChamber*100);
-        log.info("le prourcentage des chambres pour le type Double est égale"+nbDoube/allChamber*100);
-        log.info("le prourcentage des chambres pour le type Triple est égale"+nbTriple/allChamber*100);
+        //log.info("Nombre Total des chambers:"+allChamber);
+        //log.info("le prourcentage des chambres pour le type Simple est égale"+nbSimple/allChamber*100);
+        //log.info("le prourcentage des chambres pour le type Double est égale"+nbDoube/allChamber*100);
+        //log.info("le prourcentage des chambres pour le type Triple est égale"+nbTriple/allChamber*100);
     }
     public void listeChambreParBloc(){
         List<Bloc> blocs = blocRepository.findAll();
@@ -105,5 +108,12 @@ public class ChamberService implements IChamberService{
         Bloc b = blocRepository.findById(idBloc).get();
         int c = chamberRepository.countChamberByTypeCAndBloc_IdBloc(type , idBloc);
         return c;
+    }
+    @Override
+    public Set<Reservation> listerReservationsPourChambre(Long idChamber) {
+        Chamber chambre = chamberRepository.findById(idChamber)
+                .orElseThrow(() -> new RuntimeException("Chambre non trouvée avec le numéro : " + idChamber));
+
+        return new HashSet<>(chambre.getReservations());
     }
 }

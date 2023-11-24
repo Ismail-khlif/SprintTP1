@@ -16,8 +16,8 @@ import java.util.Set;
 @Builder
 public class Reservation {
     @Id
-    //@GeneratedValue(strategy = GenerationType.IDENTITY)
-    private String idReservation;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int idReservation;
 
     @Column(name="anneeReservation")
     private Date anneeReservation ;
